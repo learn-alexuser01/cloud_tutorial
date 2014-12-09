@@ -2,19 +2,27 @@
     bottom: 0;
     left: 0;
     overflow: hidden;
-    perspective: 400; 
+    perspective: 400;
+    -webkit-perspective: 400;
+    -moz-webkit-perspective: 400;
+    -ms-webkit-perspective: 400;
+    -o-webkit-perspective: 400;
     position: absolute;
     right: 0;
     top: 0;
 }
 
 #world {
+    background: red;
     height: 512px;
     left: 50%;
     margin-left: -256px;
     margin-top: -256px;
     position: absolute;
     top: 50%;
+    transform: ;
+    -webkit-transform: ;
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
     width: 512px;
 }

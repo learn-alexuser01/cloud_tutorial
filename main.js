@@ -26,8 +26,9 @@ window.addEventListener( 'mousemove', function( e ) {
     rotated in the X axis by worldXAngle degrees and
     rotated in the Y axis by worldYAngle degrees.
 */
+
 function updateView() {
-    world.style.transform = 'translateZ( ' + d + 'px ) \
+    world.style.webkitTransform = 'translateZ( ' + d + 'px ) \
         rotateX( ' + worldXAngle + 'deg) \
         rotateY( ' + worldYAngle + 'deg)';
 }
