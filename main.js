@@ -19,6 +19,8 @@ window.addEventListener( 'mousemove', function( e ) {
     worldXAngle = ( .5 - ( e.clientY / window.innerHeight ) ) * 180;
     updateView();
 } );
+window.addEventListener('mousewheel', onContainerMouseWheel);
+window.addEventListener('DOMMouseScroll', onContainerMouseWheel);
 
 /*
     Changes the transform property of world to be
@@ -28,7 +30,60 @@ window.addEventListener( 'mousemove', function( e ) {
 */
 
 function updateView() {
-    world.style.webkitTransform = 'translateZ( ' + d + 'px ) \
-        rotateX( ' + worldXAngle + 'deg) \
-        rotateY( ' + worldYAngle + 'deg)';
+    var t = 'translateZ( ' + d + 'px ) rotateX( ' + worldXAngle + 'deg) rotateY( ' + worldYAngle + 'deg)';
+    world.style.webkitTransform = t;
 }
+
+
+
+///////////////
+/*
+    objects is an array of cloud bases
+    layers is an array of cloud layers
+*/
+var objects = [],
+    layers = [];
+
+/*
+    Clears the DOM of previous clouds bases 
+    and generates a new set of cloud bases
+*/
+function generate() {
+    objects = [];
+    layers = [];
+    if ( world.hasChildNodes() ) {
+        while ( world.childNodes.length >= 1 ) {
+            world.removeChild( world.firstChild );       
+        } 
+    }
+    for( var j = 0; j < 5; j++ ) {
+        objects.push( createCloud() );
+    }
+}
+
+/*
+    Creates a single cloud base: a div in world
+    that is translated randomly into world space.
+    Each axis goes from -256 to 256 pixels.
+*/
+function createCloud() {
+
+    var div = document.createElement( 'div'  );
+    div.className = 'cloudBase';
+    var t = 'translateX( ' + random_x + 'px ) \
+        translateY( ' + random_y + 'px ) \
+        translateZ( ' + random_z + 'px )';
+    div.style.webkitTransform = t;
+    world.appendChild( div );
+    
+    return div;
+}
+
+function onContainerMouseWheel( event ) {
+		
+	event = event ? event : window.event;
+	d = d - ( event.detail ? event.detail * -5 : event.wheelDelta / 8 );
+	updateView();
+	
+}
+	
