@@ -141,6 +141,7 @@ function update (){
             translateZ( ' + layer.data.z + 'px ) \
             rotateY( ' + ( - worldYAngle ) + 'deg ) \
             rotateX( ' + ( - worldXAngle ) + 'deg ) \
+            rotateZ( ' + (layer.data.a) + 'deg ) \
             scale( ' + layer.data.s + ')';
         layer.style.webkitTransform = t;
     }
