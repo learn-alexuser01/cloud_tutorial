@@ -26,9 +26,11 @@
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
     width: 512px;
+    opacity: .5;
 }
 
 .cloudBase {
+    background: ;
     height: 20px;
     left: 256px;
     margin-left: -10px;
