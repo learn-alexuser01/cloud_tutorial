@@ -57,7 +57,7 @@ function generate() {
         } 
     }
     //Create j amount of clouds
-    for( var j = 0; j < 5; j++ ) {
+    for( var j = 0; j < 10; j++ ) {
     	//Push cloud created from createCloud() function to objects array
         objects.push( createCloud() );
     }
