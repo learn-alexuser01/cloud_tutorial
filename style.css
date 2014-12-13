@@ -5,6 +5,7 @@
 }
 
 #viewport {
+    background-image: url('night-sky.jpg');
     bottom: 0;
     left: 0;
     overflow: hidden;
@@ -21,7 +22,6 @@
 }
 
 #world {
-    background: red;
     height: 512px;
     left: 50%;
     margin-left: -256px;
@@ -48,7 +48,7 @@
 }
 
 .cloudLayer {
-    background: black;
+    background-color: rgba( 0, 0, 0, .01 );
     height: 256px;
     width: 256px;
     left: 50%;

@@ -87,7 +87,8 @@ function createCloud() {
 
 //add layers to cloud
     for( var j = 0; j < 10 + Math.round( Math.random() * 10 ); j++ ) {
-        var cloud = document.createElement( 'div' );
+        var cloud = document.createElement( 'img' );
+        cloud.setAttribute('src', "cloud.png");
         cloud.className = 'cloudLayer';
         
        	// var random_x = 256 - ( Math.random() * 512 );
