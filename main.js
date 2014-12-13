@@ -63,13 +63,31 @@ function generate() {
     }
 }
 generate();
+function makeMoon(){
+    var moon = document.createElement( 'div' );
+    moon.className = 'moon';
+    world.appendChild( moon);
+    var random_x = 256 - ( Math.random() * 512 );
+    var random_y = 256 - ( Math.random() * 512 );
+    var random_z = 256 - ( Math.random() * 512 );
+    moon.data = {
+        x: random_x,
+        y: random_y,
+        z: random_z
+    };
+
+    var t = 'translateX( ' + random_x + 'px ) translateY( ' + random_y + 'px ) translateZ( ' + random_z + 'px )';
+    moon.style.webkitTransform = t;
+    objects.push(moon);
+};
+makeMoon();
+
 /*
     Creates a single cloud base: a div in world
     that is translated randomly into world space.
     Each axis goes from -256 to 256 pixels.
 */
 function createCloud() {
-
     var div = document.createElement( 'div'  );
     div.className = 'cloudBase';
 	var random_x = 256 - ( Math.random() * 512 );
@@ -82,7 +100,7 @@ function createCloud() {
     var colorR = Math.floor(Math.random()*255);
     var colorG = Math.floor(Math.random()*255);
     var colorB = Math.floor(Math.random()*255);
-    div.style.backgroundColor = "rgb(" + colorR+"," + colorG+ ","+ colorB + ")";
+    // div.style.backgroundColor = "rgb(" + colorR+"," + colorG+ ","+ colorB + ")";
     world.appendChild( div );
 
 //add layers to cloud
@@ -146,7 +164,14 @@ function update (){
             scale( ' + layer.data.s + ')';
         layer.style.webkitTransform = t;
     }
-    
+    var moon = objects[10];
+    var m = 'translateX( ' + moon.data.x + 'px ) \
+             translateY( ' + moon.data.y + 'px ) \
+             translateZ( ' + moon.data.z + 'px ) \
+             rotateY( ' + ( - worldYAngle ) + 'deg ) \
+             rotateX( ' + ( - worldXAngle ) + 'deg ) \
+             rotateZ( ' + 10 + 'deg)'
+    moon.style.webkitTransform = m;
     requestAnimationFrame( update );
     
 }
